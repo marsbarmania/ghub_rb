@@ -1,2 +1,6 @@
-## marsbar public source code
-[Blog](http://blog.marsbar.us)
+## Ruby source code
+#### Sample
+Lots of sample ruby files.
+[Blog](http://blog.marsbar.us)<br>
+
+
