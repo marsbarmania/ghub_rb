@@ -1,8 +1,8 @@
 ## Ruby source code
+#### custom
+#### euler solution with Ruby
+#### evernote
 #### Sample
-Lots of sample ruby files.<br>
-
-samples<br>
 ├── capture_with_selenium.rb<br>
 ├── convert_string_to_html_link.rb<br>
 └── verify_receipt.rb<br>
