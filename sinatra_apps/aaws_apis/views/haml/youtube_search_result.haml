@@ -1,0 +1,13 @@
+%span{:style => "text-align:left;"}
+  %h1 Search Results
+%div.alert.alert-info='Keyword : '+ @inputval
+
+%div
+  %div.row
+    %div{:style => "text-align:center;"}
+      %ul.thumbnails
+      - @page.search('entry').each do |entry|
+        %li.span2
+          %a.thumbnail{:href=>"#{entry.xpath('media:group/media:player').first['url']}"}
+            %img{:src=>"#{entry.xpath('media:group/media:thumbnail').first['url']}"}/
+          %p "#{entry.search('title').text}"

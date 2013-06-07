@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+gem 'sinatra'
+gem "haml"
+gem 'thin'
+gem "less"
+gem "coffee-script"
+gem "thin"
+gem 'therubyracer'
+gem "ruby-aaws", "~> 0.7.0"
+gem "nokogiri"
+gem "foreman", "~> 0.63.0"

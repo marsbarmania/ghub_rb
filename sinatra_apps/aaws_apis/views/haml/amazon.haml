@@ -1,0 +1,9 @@
+%div{:style => "text-align:left; padding:10px 0;"}
+  %h2 Amazon de Search
+%div.control-group
+  %form.well.form-inline{:action=>"/amazon", :method=>"post"}
+    %label.control-label{:for=>"inputtext"}
+    Enter product keyword : 
+    %input#inputtext.input-xlarge.search-query{:placeholder=> "keyword here ...", :type=>"text", :name=>"str"}
+    %input.btn.btn-primary{:type=>"submit", :value=>"Search"}
+  

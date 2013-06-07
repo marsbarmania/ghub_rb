@@ -1,0 +1,8 @@
+%div{:style => "text-align:left; padding:10px 0;"}
+  %h2 YouTube de Video Search
+%div.control-group
+  %form.well.form-inline{:action=>"/youtube", :method=>"post"}
+    %label.control-label{:for=>"inputtext"}
+    Enter movie keyword : 
+    %input.input-xlarge.search-query{:placeholder=> "keyword here ...", :type=>"text", :name=>"str"}
+    %input.btn.btn-primary{:type=>"submit", :value=>"Search"}

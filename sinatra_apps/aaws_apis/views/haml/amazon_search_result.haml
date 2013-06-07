@@ -1,0 +1,17 @@
+%span{:style => "text-align:left;"}
+  %h1 Search Results
+%div.alert.alert-info='Keyword : '+ @inputval
+
+%div
+  %div.row
+    %div{:style => "text-align:center;"}
+      %ul.thumbnails
+      - @page.item_search_response.items.item.each do |i|
+        %li.span4
+          %a.thumbnail
+            - begin
+              %img{:src => "#{i.medium_image.url}", :width => 120, :height => 'auto'}/
+            - rescue
+              %img{:src => "images/no_image.png", :width => 120, :height => 'auto'}
+          %h5 #{i.item_attributes.title}
+          %p Product From: #{i.item_attributes.publisher}

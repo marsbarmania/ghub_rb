@@ -1,0 +1,62 @@
+!!!
+%html{:lang => "jp"}
+  %head
+    %title Web Service App
+    %meta{:"http-equiv"=>"Content-Type", :content=>"text/html", :charset=>"utf-8"}
+    %link{:href => "bootstrap/css/bootstrap.css", :type => "text/css", :rel => "stylesheet"}
+    %link{ :href => "bootstrap/css/bootstrap-responsive.css", :type => "text/css", :rel => "stylesheet" }
+    %link{:href => "css/style.less", :type => "text/css", :rel => "stylesheet/less"}
+  %body
+
+    %div.navbar.navbar-fixed-top
+      %div.navbar-inner
+        %div.container
+          %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapase"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => '/'}=@site_name
+          %div.nav-collapse
+            %ul.nav
+              - if @nav_pos == 0
+                %li.active
+                  %a{:href => "/"} Home
+              - else
+                %li
+                  %a{:href => "/"} Home     
+              - if @nav_pos == 1  
+                %li.active
+                  %a{:href => "/amazon"} Amazon
+              - else
+                %li
+                  %a{:href => "/amazon"} Amazon
+              - if @nav_pos == 2
+                %li.active
+                  %a{:href => "/youtube"} Youtube
+              - else
+                %li
+                  %a{:href => "/youtube"} Youtube
+
+
+    %div.container      
+      %div.row
+        != yield
+      %hr
+      %div#footer{:style => "text-align:center;"}
+        &copy; marsbar.us
+
+    %script{ :type => "text/javascript", :src =>"scripts/less-1.3.0.min.js"}
+    %script{:type =>"text/javascript", :src =>"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/jquery.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-transition.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-alert.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-modal.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-dropdown.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-scrollspy.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-tab.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-tooltip.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-popover.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-button.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-collapse.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-carousel.js"}
+    %script{ :type => "text/javascript", :src =>"bootstrap/js/basic/bootstrap-typeahead.js"}
