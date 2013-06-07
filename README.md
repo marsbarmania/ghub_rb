@@ -1,30 +1,14 @@
 ## Ruby source code
 #### custom
-custom<br>
-├── classes<br>
-│   └── sort.rb<br>
-└── modules<br>
-    ├── eratosthenes.rb<br>
-    └── merge_sort.rb<br>
+クラスファイルなどの拡張など。
 #### euler solution with Ruby
-euler/<br>
-├── problem1.rb<br>
-├── problem10.rb<br>
-├── problem2.rb<br>
-├── problem3.rb<br>
-├── problem4.rb<br>
-├── problem5.rb<br>
-├── problem6.rb<br>
-├── problem7.rb<br>
-├── problem8.rb<br>
-└── problem9.rb
+Sample solution of the Project Euler problems.
+
 #### evernote
-evernote/<br>
-└── my_basic_note.rb<br>
+Using Evernote API Sample
 #### Sample
-├── capture_with_selenium.rb<br>
-├── convert_string_to_html_link.rb<br>
-└── verify_receipt.rb<br>
+
+Others
 
 [[ Blog ] ](http://blog.marsbar.us)<br>
 
