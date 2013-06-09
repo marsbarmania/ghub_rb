@@ -4,8 +4,8 @@
 #### euler solution with Ruby
 Sample solution of the Project Euler problems.
 
-#### evernote
-Using Evernote API Sample
+#### Web service apis sample
+
 #### Sample
 
 Others
