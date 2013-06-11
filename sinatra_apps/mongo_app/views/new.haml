@@ -1,0 +1,31 @@
+%h2{:style=>"padding-top:40px;"} New Memo
+%div.span8
+  %form.form-horizontal{:action=>"/", :method=>"post"}
+    %fieldset
+      .control-group
+        %label.control-label{:for => "input01"} Title
+        .controls
+          %input#input01.input-xlarge{:type => "text", :name=>"title"}
+      .control-group
+        %label.control-label{:for => "optionsCheckbox"} Checkbox
+        .controls
+          %label.checkbox
+            %input#optionsCheckbox{:type => "checkbox", :value => "option1", :name=>"ck"}
+
+      .control-group
+        %label.control-label{:for => "select01"} Option list
+        .controls
+          %select#select01{:name=>"sel"}
+            %option something
+            %option 2
+            %option 3
+            %option 4
+            %option 5
+
+      .control-group
+        %label.control-label{:for => "textarea"} Body Text
+        .controls
+          %textarea#textarea.input-xlarge.span4{:rows => "5", :name=>"body"}
+      .form-actions
+        %button.btn.btn-primary{:type => "submit"} Submit
+        %button.btn Cancel

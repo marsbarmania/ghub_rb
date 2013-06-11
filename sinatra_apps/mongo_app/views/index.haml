@@ -1,0 +1,17 @@
+%h2{:style=>"padding-top:40px;"} Memo Lists
+%div.btn-group
+  %a.btn.dropdown-toggle{:href => "/new" ,:"data-toggle" => "dropdown"}
+    Create Memo
+    %span.caret
+  %ul.dropdown-menu
+
+%hr
+
+%div.row
+  - @tasks.each do |task|
+    %div.span4
+      %h3=task.title
+      %p=task.body
+      %p
+        %a.btn{:href=>"/#{task._id}"} Edit memo &raquo;
+        %a.btn.btn-danger{:href=>"/destroy/#{task._id}"} Delete

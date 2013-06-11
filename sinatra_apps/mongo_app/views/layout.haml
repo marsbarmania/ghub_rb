@@ -1,0 +1,63 @@
+!!!
+%html{:lang => "jp"}
+  %head
+    %title TaskMemo
+    %meta{:"http-equiv"=>"Content-Type", :content=>"text/html", :charset=>"utf-8"}
+    %meta{:name => "viewport", :content=>"width=device-width, initial-scale=1.0"}
+    %meta{:name=>"description", :content=>""}
+    %meta{:name=>"author", :content=>"marsbearmanson"}
+    %link{:href => "/bootstrap/css/bootstrap.css", :type => "text/css", :rel => "stylesheet"}
+    %link{ :href => "/bootstrap/css/bootstrap-responsive.css", :type => "text/css", :rel => "stylesheet" }
+    %link{:href => "/css/style.less", :type => "text/css", :rel => "stylesheet/less"}
+    %link{ :href=>"http://fonts.googleapis.com/css?family=Nosifer", :type=>"text/css", :rel => "stylesheet/css"}
+    :css
+  %body.preview{:"data-spy"=>"scroll", :"data-target"=>".subnav",:"data-offset"=>"80"}
+    %div.navbar.navbar-fixed-top
+      %div.navbar-inner
+        %div.container
+          %a.btn.btn-navbar.collapsed{:"data-toggle" => "collapse", :"data-target" => ".nav-collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href=>"/"} TaskMemo
+          %div.nav-collapse.collapse#main{:style=>"height:0px"}
+            %ul.nav
+              %li.active
+                %a{:href=>"/"}Home
+              %li
+                %a{:href=>"/"}About
+              %li
+                %a{:href=>"/"}Contact
+
+    %div.container
+      %div.row
+        != yield
+
+
+
+
+
+
+
+
+
+
+    %script{ :type => "text/javascript", :src =>"/js/less-1.3.0.min.js"}
+    %script{:type =>"text/javascript", :src =>"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/application.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/bootswatch.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/application.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/bootswatch.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/jquery.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-transition.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-alert.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-modal.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-dropdown.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-scrollspy.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-tab.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-tooltip.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-popover.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-button.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-collapse.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-carousel.js"}
+    %script{ :type => "text/javascript", :src =>"/bootstrap/js/basic/bootstrap-typeahead.js"}

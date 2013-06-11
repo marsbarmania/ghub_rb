@@ -1,0 +1,23 @@
+%h2{:style=>"padding-top:40px;"} Edit Memo
+%div.span8
+  %form.form-horizontal{:action=>"/", :method=>"post"}
+    %input{:type=>"hidden",:name=>"_method", :value=>"put"}
+    %input{:type=>"hidden",:name=>"id", :value=>"#{@task._id}"}
+    %fieldset
+      .control-group
+        %label.control-label{:for => "input01"} Title
+        .controls
+          %input#input01.input-xlarge{:type => "text", :name=>"title", :value=>"#{@task.title}"}
+      .control-group
+        %label.control-label{:for => "optionsCheckbox"} Checkbox
+        .controls
+          %label.checkbox
+            %input#optionsCheckbox{:type => "checkbox", :value => "option1", :name=>"ck"}
+
+      .control-group
+        %label.control-label{:for => "textarea"} Body Text
+        .controls
+          %textarea#textarea.input-xlarge.span4{:rows => "5", :name=>"body"}="#{@task.body}"
+      .form-actions
+        %input.btn.btn-primary{:type => "submit", :value=>"Submit"}
+        %input.btn{:type=>"button", :name=>"Cancel", :value=>"Cancel", :onclick=>"window.location = '/'"}
