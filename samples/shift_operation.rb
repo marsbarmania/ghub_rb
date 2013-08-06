@@ -11,13 +11,18 @@ def shift_move(type,n,m)
     if t <= m
       # まだいけるかも
       cnt += 1
+    else
+      # もどす
+      t = t >> 1
+      # 終了
+      break
     end
    end
    # 差分を計算してのちほど加算する値
    add_num = 0
    # 割る値との差が加算する値を足す回数になるので
    # 足し算で計算する
-   (t - m).times{ add_num += n }
+   (m - t).times{ add_num += n }
    # これが結果 左シフトの結果と加算する値
    (n << cnt) + add_num
 
