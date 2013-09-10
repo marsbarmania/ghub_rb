@@ -3,6 +3,7 @@ module heap
     # A. heapを構築
     # 最初にheapの半分から構築
     # 末尾の位置を2で割ったsize/2 + 1が末尾の親になる
+    # 末尾のヒープからルートノードのヒープまでどんどん処理範囲を広げていく
     i = self.size/2 + 1
     until i < 0
       down_heap(i, self.size-1)
