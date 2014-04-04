@@ -1,0 +1,25 @@
+https://codeiq.jp/challenge.php#pos
+
+https://www.dropbox.com/s/s6rzb4o8nkbsra0/logs.ltsv
+
+次は、同じログの書式が変わったものを同様に解析してください。これはLTSVと呼ばれるフォーマットのログデータです。
+(※ ただし行先頭の行番号はデータに含みません)
+ログは1行が1単位、各データはタブで区切られ、区切られたデータのうち最初のコロン":"までがデータの名前、最初のコロンより後は対応するデータです。データにタブが含まれる場合は \t としてエスケープされます。
+
+
+====
+rhost:127.0.0.1 user:- time:08/Jul/2013:17:41:50 +0900 method:GET path:/?f=1&v=2 protocol:HTTP/1.1 status:200 bytes:4020
+rhost:127.0.0.1 user:- time:08/Jul/2013:17:41:50 +0900 method:GET path:/?f=1&v=2\t&x=" protocol:HTTP/1.1 status:200 bytes:4020
+rhost:127.0.0.1 user:- time:08/Jul/2013:17:41:50 +0900 method:GET path:/?f=1&v=2 protocol:HTTP/1.1 status:200 bytes:4020 referer:http://example.com/login agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:22.0) Gecko/20100101 Firefox/22.0 duration:1171380
+rhost:127.0.0.1 user:- time:08/Jul/2013:17:41:50 +0900 method:GET path:/?f=1&v=2 protocol:HTTP/1.1 status:200 bytes:4020 referer:http://example.com/login agent:Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0) this is "fake" duration:1171380
+vhost:api.example.com rhost:127.0.0.1 user:- time:08/Jul/2013:17:41:50 +0900 method:GET path:/?f=1&v=2 protocol:HTTP/1.1 status:200 bytes:4020 referer:http://example.com/login agent:curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8x zlib/1.2.5 duration:1171380
+vhost:proxy.example.com rhost:127.0.0.1 user:moris time:08/Jul/2013:17:41:50 +0900 method:GET path:http://api.example.com/?f=1&v=2 protocol:HTTP/1.1 status:200 bytes:4020 referer:http://example.com/login agent:curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8x zlib/1.2.5 duration:1171380
+vhost:proxy.example.com rhost:127.0.0.1 user:moris time:08/Jul/2013:17:41:50 +0900 method:GET path:http://api.example.com/?f=1&v=2&x=" status:200 bytes:4020 referer:http://example.com/login agent:curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8x zlib/1.2.5 duration:1171380
+=====
+
+これも元データはこちらから入手できます。タブ(ハードタブ)が含まれるので元ファイルを入手して試したほうがよいでしょう。
+出力は前の設問と同じようにJSONでフォーマットして出力してください。
+元データの内容は設問1と2で同じなので、同じ結果が出力されるかどうかで正しいかどうかがわかります。
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝

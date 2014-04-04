@@ -1,0 +1,7 @@
+127.0.0.1 - - [08/Jul/2013:17:41:50 +0900] "GET /?f=1&v=2 HTTP/1.1" 200 4020
+127.0.0.1 - - [08/Jul/2013:17:41:50 +0900] "GET /?f=1&v=2\t&x=\" HTTP/1.1" 200 4020
+127.0.0.1 - - [08/Jul/2013:17:41:50 +0900] "GET /?f=1&v=2 HTTP/1.1" 200 4020 "http://example.com/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:22.0) Gecko/20100101 Firefox/22.0" 1171380
+127.0.0.1 - - [08/Jul/2013:17:41:50 +0900] "GET /?f=1&v=2 HTTP/1.1" 200 4020 "http://example.com/login" "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0) this is \"fake\"" 1171380
+"api.example.com" 127.0.0.1 - - [08/Jul/2013:17:41:50 +0900] "GET /?f=1&v=2 HTTP/1.1" 200 4020 "http://example.com/login" "curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8x zlib/1.2.5" 1171380
+"proxy.example.com" 127.0.0.1 - moris [08/Jul/2013:17:41:50 +0900] "GET http://api.example.com/?f=1&v=2 HTTP/1.1" 200 4020 "http://example.com/login" "curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8x zlib/1.2.5" 1171380
+"proxy.example.com" 127.0.0.1 - moris [08/Jul/2013:17:41:50 +0900] "GET http://api.example.com/?f=1&v=2&x=\"" 200 4020 "http://example.com/login" "curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8x zlib/1.2.5" 1171380
