@@ -1,24 +1,10 @@
 # coding: utf-8
-# ------------------------------------------------------
-# [必須] 1. 使用言語・動作環境
-# Ruby 2.1.1
-#
-# [必須] 2. プログラムの特長・工夫した点等、アピールポイント
-#  *シンプルにわかりやすい処理を実装するように心がけた
-#    -クラス化することでオブジェクトの中で処理が完結するようにした
-#    -記述方法を極力統一した
-#
-# [任意] 3. もし企業からのスカウトメールがきたらどのくらい積極的にアクションすると思いますか？
-# 積極的に会ってみたいと思う
-# ------------------------------------------------------
 
 # Studentクラス
 # 生徒の成績などを格納するクラス
 class Student
-  # 名前、各教科の成績スコア
-  attr_accessor :name,:lang,:math,:eng,:social,:science,:total
-  # 各教科の順位
-  attr_accessor :ord_lang,:ord_math,:ord_eng,:ord_social,:ord_science,:ord_total
+  # 成績スコア、各教科の順位の格納配列
+  attr_accessor :score_data, :rank_conveted
 
   # Studentオブジェクト生成
   #
@@ -27,37 +13,57 @@ class Student
   # ==== Return
   # 生成されたStudentオブジェクト
   def initialize(info)
-    @name = info[0]
-    @lang = info[1].to_i
-    @math = info[2].to_i
-    @eng = info[3].to_i
-    @social = info[4].to_i
-    @science = info[5].to_i
-    @total = 0
-    info.each_with_index do |num,index|
-      # 生徒名はスキップ
-      @total += num.to_i unless index==0
+    @score_data= []
+    total = 0
+    # 名前とスコアを配列に格納する
+    info.each_with_index do |val,index|
+      unless index.zero?
+        @score_data << val.to_i
+        total += val.to_i
+      else
+        @score_data << val
+      end
     end
+    # 最後の要素絡むに合計カラムを追加
+    @score_data << total
+
   end
 
   # 各科目のランク値を代入する
   def set_rank_val(list)
-    @ord_lang = list[0]
-    @ord_math = list[1]
-    @ord_eng = list[2]
-    @ord_social = list[3]
-    @ord_science = list[4]
-    @ord_total = list[5]
+    @rank_conveted = list
+    # 名前を先頭に追加
+    @rank_conveted.unshift(@score_data[0])
   end
 
   # 各科目のランク値の配列を返す
   # ==== Return
   # ランク値配列
   def subject_rank
-    # csvで書き出される行の順番の配列
-    [@name,@ord_lang, @ord_math, @ord_eng, @ord_social, @ord_science, @ord_total]
+    # csvで書き出される行の順番の配列を返す
+    @rank_conveted
   end
 
+end
+
+# Titleクラス
+# 読み込んだタイトルラベル
+class Title
+  attr_accessor :prop
+  def initialize(line)
+    @prop = line.chomp.encode('utf-8', 'sjis').split(',')
+    @prop << "合計"
+  end
+
+  # 文字列にして返す
+  def to_s
+    @prop.join(',')
+  end
+
+  # 要素数の長さ
+  def size
+    @prop.size
+  end
 end
 
 # Rankingは成績を順位付けを実装するクラス
@@ -68,7 +74,7 @@ end
 #  rank.output "output_file_path"
 class Ranking
   # Studentクラスオブジェクトを格納
-  attr_accessor :student_data
+  attr_accessor :student_data ,:title
 
   # Rankingオブジェクト生成
   #
@@ -88,9 +94,11 @@ class Ranking
         # 最初のタイトル行はスキップ
         unless index == 0
           info = line.encode('utf-8', 'sjis').split(",")
-
           # infoデータでStudentクラスインスタンスを初期化する
           @student_data << Student.new(info)
+        else
+          # タイトル行
+          @title = Title.new(line)
         end
         index += 1
       end
@@ -105,10 +113,11 @@ class Ranking
     # 出力用のファイル
     File.open("#{filepath}","w") do |f|
       # タイトル行
-      f.puts("生徒氏名,国語,数学,英語,社会,理科,合計")
+      f.puts(@title.to_s.encode('sjis', 'utf-8'))
       # カンマ区切りで書込み
       @student_data.each do |student|
-        f.puts(student.subject_rank.join(','))
+        # エンコードをShift_JISに
+        f.puts(student.subject_rank.join(',').encode('sjis', 'utf-8'))
       end
     end
   end
@@ -116,12 +125,13 @@ class Ranking
 private
   # 各Studentオブジェクトの科目得点を総合ランキング値に変換する
   def convert_to_rank
-    # labelは科目のラベル格納用の配列
     # temp_tblはStudentクラスに渡すデータを格納する配列
-    labels, temp_tbl = [:lang,:math,:eng,:social,:science,:total], []
+    temp_tbl = []
 
-    labels.map do |key|
-      temp_tbl << score_to_rank(subject_score(key))
+    @title.size.times do |index|
+      unless index.zero?
+        temp_tbl << score_to_rank(subject_score(index))
+      end
     end
 
     # temp_tblの行と列を入れ替え(Array#transpose)をして
@@ -154,23 +164,26 @@ private
     rank
   end
 
-  # Studentクラスのプロパティ名から
-  # その科目のスコア配列を取得する
+  # Studentクラスの
+  # 科目のスコア配列を取得する
   # ==== Return
   # scores配列
-  def subject_score(keyword)
+
+  def subject_score(index)
     scores = []
     @student_data.map do |student|
       unless student.nil?
-        scores << student.send(keyword)
+        scores << student.score_data[index]
       end
     end
     scores
   end
-
 end
 
+
+# 読み込むファイル
 in_file = "./seiseki/class_3c_input.csv"
+# 出力するファイル
 out_file = "./seiseki/class_3c_out.csv"
 
 # Rankingクラスをインスタンス化
